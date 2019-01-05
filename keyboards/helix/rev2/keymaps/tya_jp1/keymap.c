@@ -57,6 +57,10 @@ enum macro_keycodes {
 #include "../../../quantum/keymap_extras/keymap_jp.h"
 #define TY_NEXT LALT(KC_RGHT)
 #define TY_BACK LALT(KC_LEFT)
+
+#define TY_LOWER LT(_LOWER, JP_MHEN)
+#define TY_RAISE LT(_RAISE, JP_HENK)
+
 ///
 
 
@@ -79,15 +83,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * |------+------+------+------+------+------+------+------+------+------+------+------+------+------|
    * | Shift|   Z  |   X  |   C  |   V  |   B  |   [  |   ]  |   N  |   M  |   ,  |   .  |   /  |  \   |
    * |------+------+------+------+------+------+------+------+------+------+------+------+------+------|
-   * |Adjust|Zenkak| GUI  | Alt  |Lower |Space |Muhen |Henkan| Enter|Raise |  BS  |PrtSc |Zenkak|Adjust|
+   * |Adjust|Zenkak| GUI  | Alt  |L/Muhe|Space | Enter| Enter| Space| R/Hen|  BS  |PrtSc |Zenkak|Adjust|
    * `-------------------------------------------------------------------------------------------------'
    */
   [_QWERTY] = LAYOUT( \
-      KC_ESC , KC_1   , KC_2   , KC_3   , KC_4   , KC_5   ,                   KC_6   ,  KC_7   , KC_8   , KC_9   , KC_0   , KC_BSPC, \
-      KC_TAB , KC_Q   , KC_W   , KC_E   , KC_R   , KC_T   ,                   KC_Y   ,  KC_U   , KC_I   , KC_O   , KC_P   , JP_AT  , \
-      KC_LCTL, KC_A   , KC_S   , KC_D   , KC_F   , KC_G   ,                   KC_H   ,  KC_J   , KC_K   , KC_L   , JP_SCLN, JP_COLN, \
-      KC_LSFT, KC_Z   , KC_X   , KC_C   , KC_V   , KC_B   , JP_LBRC, JP_RBRC, KC_N   ,  KC_M   , JP_COMM, JP_DOT , JP_SLSH, JP_BSLS, \
-      ADJUST , JP_ZHTG, KC_LGUI, KC_LALT, LOWER  , KC_SPC , JP_MHEN, JP_HENK, KC_ENT ,  RAISE  , KC_BSPC, KC_PSCR, JP_ZHTG, ADJUST   \
+      KC_ESC , KC_1   , KC_2   , KC_3   , KC_4    , KC_5   ,                   KC_6   , KC_7    , KC_8   , KC_9   , KC_0   , KC_BSPC, \
+      KC_TAB , KC_Q   , KC_W   , KC_E   , KC_R    , KC_T   ,                   KC_Y   , KC_U    , KC_I   , KC_O   , KC_P   , JP_AT  , \
+      KC_LCTL, KC_A   , KC_S   , KC_D   , KC_F    , KC_G   ,                   KC_H   , KC_J    , KC_K   , KC_L   , JP_SCLN, JP_COLN, \
+      KC_LSFT, KC_Z   , KC_X   , KC_C   , KC_V    , KC_B   , JP_LBRC, JP_RBRC, KC_N   , KC_M    , JP_COMM, JP_DOT , JP_SLSH, JP_BSLS, \
+      ADJUST , JP_ZHTG, KC_LGUI, KC_LALT, TY_LOWER, KC_SPC , KC_ENT , KC_ENT , KC_SPC , TY_RAISE, KC_BSPC, KC_PSCR, JP_ZHTG, ADJUST   \
       ),
 
   /* 10key
@@ -181,9 +185,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * |------+------+------+------+------+------|             |------+------+------+------+------+------|
    * |  F1  |  F2  |  F3  |  F4  |  F5  |  F6  |             |      |   -  |   =  |   ^  |   ~  |   |  |
    * |------+------+------+------+------+------|             |------+------+------+------+------+------|
-   * |  F7  |  F8  |  F9  |  F10 |  F11 |  F12 |             | Left | Down |  Up  | Right| Home | End  |
+   * |  F7  |  F8  |  F9  |  F10 |  F11 |  F12 |             | Left | Down |  Up  | Right| PgUp | PgDn |
    * |------+------+------+------+------+------+------+------+------+------+------+------+------+------|
-   * |      |      |      |      |      |      |      |      |  Ins |  Del | Back | Next | PgUp | PgDn |
+   * |      |      |      |      |      |      |      |      |  Ins |  Del | Back | Next | Home | End  |
    * |------+------+------+------+------+------+------+------+------+------+------+------+------+------|
    * |      |      |      |      |      |      |      |      |      |      |      |      |      |      |
    * `-------------------------------------------------------------------------------------------------'
@@ -191,8 +195,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_RAISE] = LAYOUT( \
       _______, _______, _______, _______, _______, _______,                   _______, _______, _______, _______, _______, _______, \
       KC_F1  , KC_F2  , KC_F3  , KC_F4  , KC_F5  , KC_F6  ,                   _______, JP_MINS, JP_EQL , JP_CIRC, JP_TILD, JP_PIPE, \
-      KC_F7  , KC_F8  , KC_F9  , KC_F10 , KC_F11 , KC_F12 ,                   KC_LEFT, KC_DOWN, KC_UP  , KC_RGHT, KC_HOME, KC_END , \
-      _______, _______, _______, _______, _______, _______, _______, _______, KC_INS , KC_DEL , TY_BACK, TY_NEXT, KC_PGUP, KC_PGDN, \
+      KC_F7  , KC_F8  , KC_F9  , KC_F10 , KC_F11 , KC_F12 ,                   KC_LEFT, KC_DOWN, KC_UP  , KC_RGHT, KC_PGUP, KC_PGDN, \
+      _______, _______, _______, _______, _______, _______, _______, _______, KC_INS , KC_DEL , TY_BACK, TY_NEXT, KC_HOME, KC_END , \
       _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______  \
       ),
 
