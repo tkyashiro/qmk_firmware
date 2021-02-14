@@ -26,7 +26,7 @@ extern uint8_t is_master;
 // entirely and just use numbers.
 enum layer_number {
     _QWERTY = 0,
-    _10KEY,
+    //_10KEY,
     //_COLEMAK,
     //_DVORAK,
     _LOWER,
@@ -82,17 +82,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * |------+------+------+------+------+------|             |------+------+------+------+------+------|
    * | Ctrl |   A  |   S  |   D  |   F  |   G  |             |   H  |   J  |   K  |   L  |   ;  |  :   |
    * |------+------+------+------+------+------+------+------+------+------+------+------+------+------|
-   * | Shift|   Z  |   X  |   C  |   V  |   B  |   |  |   ]  |   N  |   M  |   ,  |   .  |   /  |  \   |
+   * | Shift|   Z  |   X  |   C  |   V  |   B  |   [  |   ]  |   N  |   M  |   ,  |   .  |   /  |  \   |
    * |------+------+------+------+------+------+------+------+------+------+------+------+------+------|
    * |Adjust|Zenkak| Alt  | GUI  |L/Muhe|Space | Enter| Enter| Space| R/Hen|  BS  |PrtSc |Zenkak|Adjust|
    * `-------------------------------------------------------------------------------------------------'
    */
   [_QWERTY] = LAYOUT( \
-      KC_ESC , KC_1   , KC_2   , KC_3   , KC_4    , KC_5   ,                   KC_6   , KC_7    , KC_8   , KC_9   , KC_0   , KC_BSPC, \
-      KC_TAB , KC_Q   , KC_W   , KC_E   , KC_R    , KC_T   ,                   KC_Y   , KC_U    , KC_I   , KC_O   , KC_P   , JP_AT  , \
-      KC_LCTL, KC_A   , KC_S   , KC_D   , KC_F    , KC_G   ,                   KC_H   , KC_J    , KC_K   , KC_L   , JP_SCLN, JP_COLN, \
-      KC_LSFT, KC_Z   , KC_X   , KC_C   , KC_V    , KC_B   , JP_PIPE, JP_RBRC, KC_N   , KC_M    , JP_COMM, JP_DOT , JP_SLSH, JP_BSLS, \
-      ADJUST , JP_ZHTG, KC_LALT, KC_LGUI, TY_LOWER, KC_SPC , KC_ENT , KC_ENT , KC_SPC , TY_RAISE, KC_BSPC, KC_PSCR, JP_ZHTG, ADJUST   \
+      KC_ESC , KC_1   , KC_2   , KC_3   , KC_4  , KC_5   ,                   KC_6   , KC_7   , KC_8   , KC_9   , KC_0   , KC_BSPC, \
+      KC_TAB , KC_Q   , KC_W   , KC_E   , KC_R  , KC_T   ,                   KC_Y   , KC_U   , KC_I   , KC_O   , KC_P   , JP_AT  , \
+      KC_LCTL, KC_A   , KC_S   , KC_D   , KC_F  , KC_G   ,                   KC_H   , KC_J   , KC_K   , KC_L   , JP_SCLN, JP_COLN, \
+      KC_LSFT, KC_Z   , KC_X   , KC_C   , KC_V  , KC_B   , JP_LBRC, JP_RBRC, KC_N   , KC_M   , JP_COMM, JP_DOT , JP_SLSH, JP_BSLS, \
+      ADJUST , JP_ZHTG, KC_LALT, KC_LGUI, LOWER , KC_SPC , JP_MHEN, JP_HENK, KC_ENT , RAISE  , KC_BSPC, KC_PSCR, JP_ZHTG, ADJUST   \
       ),
 
   /* 10key
@@ -108,13 +108,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * | (Adj)| LEFT | DOWN | RIGHT|      |      |      |      |      | LEFT | DOWN | RIGHT|      | (Adj)|
    * `-------------------------------------------------------------------------------------------------'
    */
-  [_10KEY] = LAYOUT( \
-      _______, KC_7   , KC_8   , KC_9   , JP_SLSH, _______,                   _______, KC_7   , KC_8   , KC_9   , JP_SLSH, _______, \
-      _______, KC_4   , KC_5   , KC_6   , JP_ASTR, KC_ENT ,                   _______, KC_4   , KC_5   , KC_6   , JP_ASTR, KC_ENT , \
-      _______, KC_1   , KC_2   , KC_3   , JP_MINS, KC_ENT ,                   _______, KC_1   , KC_2   , KC_3   , JP_MINS, KC_ENT , \
-      _______, KC_0   , KC_UP  , JP_DOT , JP_PLUS, _______, _______, _______, _______, KC_0   , KC_UP  , JP_DOT , JP_PLUS, _______, \
-      _______, KC_LEFT, KC_DOWN, KC_RGHT, _______, _______, _______, _______, _______, KC_LEFT, KC_DOWN, KC_RGHT, _______, _______  \
-      ),
+  /* [_10KEY] = LAYOUT( \
+         _______, KC_7   , KC_8   , KC_9   , JP_SLSH, _______,                   _______, KC_7   , KC_8   , KC_9   , JP_SLSH, _______, \
+         _______, KC_4   , KC_5   , KC_6   , JP_ASTR, KC_ENT ,                   _______, KC_4   , KC_5   , KC_6   , JP_ASTR, KC_ENT , \
+         _______, KC_1   , KC_2   , KC_3   , JP_MINS, KC_ENT ,                   _______, KC_1   , KC_2   , KC_3   , JP_MINS, KC_ENT , \
+         _______, KC_0   , KC_UP  , JP_DOT , JP_PLUS, _______, _______, _______, _______, KC_0   , KC_UP  , JP_DOT , JP_PLUS, _______, \
+         _______, KC_LEFT, KC_DOWN, KC_RGHT, _______, _______, _______, _______, _______, KC_LEFT, KC_DOWN, KC_RGHT, _______, _______  \
+         ),
+		 */
 
     
   /* Colemak
@@ -177,7 +178,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_LOWER] = LAYOUT( \
       _______, KC_F1  , KC_F2  , KC_F3  , KC_F4  , KC_F5  ,                   _______, _______, _______, _______, _______, _______, \
       _______, KC_F6  , KC_F7  , KC_F8  , KC_F9  , KC_F10 ,                   _______, _______, _______, _______, _______, _______, \
-      _______, KC_F11 , KC_F12 , _______, _______, TY_CLSE,                   _______, _______, _______, _______, _______, _______, \
+      _______, KC_F11 , KC_F12 , TY_BACK, TY_NEXT, TY_CLSE,                   _______, _______, _______, _______, _______, _______, \
       _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, \
       _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______  \
       ),
@@ -196,9 +197,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * `-------------------------------------------------------------------------------------------------'
    */
   [_RAISE] = LAYOUT( \
-      _______, KC_F1  , KC_F2  , KC_F3  , KC_F4  , KC_F5  ,                   _______, _______, _______, _______, _______, _______, \
+      _______, KC_F1  , KC_F2  , KC_F3  , KC_F4  , KC_F5  ,                   _______, _______, _______, _______, KC_INS , KC_DEL , \
       _______, KC_F6  , KC_F7  , KC_F8  , KC_F9  , KC_F10 ,                   _______, JP_MINS, JP_EQL , JP_CIRC, JP_TILD, JP_PIPE, \
-      _______, KC_F11 , KC_F12 , _______, _______, TY_CLSE,                   KC_LEFT, KC_DOWN, KC_UP  , KC_RGHT, KC_PGUP, KC_PGDN, \
+      _______, KC_F11 , KC_F12 , TY_BACK, TY_NEXT, TY_CLSE,                   KC_LEFT, KC_DOWN, KC_UP  , KC_RGHT, KC_PGUP, KC_PGDN, \
       _______, _______, _______, _______, _______, _______, _______, _______, KC_INS , KC_DEL , TY_BACK, TY_NEXT, KC_HOME, KC_END , \
       _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______  \
       ),
@@ -506,11 +507,11 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         }
       #endif
       break;
-    case TENKEY:
-      if (record->event.pressed) {
-        persistent_default_layer_set(1UL<<_10KEY);
-      }
-      break;
+    //case TENKEY:
+    //  if (record->event.pressed) {
+    //    persistent_default_layer_set(1UL<<_10KEY);
+    //  }
+    //  break;
   }
   return true;
 }
@@ -582,7 +583,7 @@ void matrix_update(struct CharacterMatrix *dest,
 #define L_LOWER (1<<_LOWER)
 #define L_RAISE (1<<_RAISE)
 #define L_ADJUST (1<<_ADJUST)
-#define L_TENKEY (1<<_10KEY)
+//#define L_TENKEY (1<<_10KEY)
 #define L_ADJUST_TRI (L_ADJUST|L_RAISE|L_LOWER)
 
 static void render_logo(struct CharacterMatrix *matrix) {
@@ -630,9 +631,9 @@ void render_status(struct CharacterMatrix *matrix) {
         case L_ADJUST_TRI:
            matrix_write_P(matrix, PSTR("Adjust"));
            break;
-        case L_TENKEY:
-           matrix_write_P(matrix, PSTR("10 Key"));
-           break;
+        //case L_TENKEY:
+        //   matrix_write_P(matrix, PSTR("10 Key"));
+        //   break;
         default:
            matrix_write(matrix, buf);
     }

@@ -37,8 +37,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //#define USE_MATRIX_I2C
 
 /* Select hand configuration */
-// #define MASTER_LEFT
-#define MASTER_RIGHT    // since ps2 mouse will be on right hand side
+#define MASTER_LEFT
+// #define MASTER_RIGHT
 // #define EE_HANDS
 
 // Helix keyboard OLED support
@@ -161,28 +161,5 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //#define NO_ACTION_MACRO
 //#define NO_ACTION_FUNCTION
 
-/* for PS2 interuption */
-#ifdef PS2_USE_INT
-# define PS2_CLOCK_PORT  PORTB  // clock pin 
-# define PS2_CLOCK_PIN   PINB   //
-# define PS2_CLOCK_DDR   DDRB   //
-# define PS2_CLOCK_BIT   5      //
-# define PS2_DATA_PORT   PORTB  // data pin
-# define PS2_DATA_PIN    PINB   //
-# define PS2_DATA_DDR    DDRB   //
-# define PS2_DATA_BIT    6      //
-
-// for interuption
-# define PS2_INT_INIT()  do {    \
-    PCICR |= (1<<PCIE0);         \
-} while (0)                        
-# define PS2_INT_ON()  do {      \
-    PCMSK0 |= (1<<PCINT5);       \
-} while (0)
-# define PS2_INT_OFF() do {      \
-    PCMSK0 &= ~(1<<PCINT5);      \
-} while (0)
-# define PS2_INT_VECT   PCINT0_vect // interuption vector
-#endif
 
 #endif
